@@ -1,0 +1,16 @@
+services:
+  go2sim:
+    image: go2-dev
+    container_name: go2sim
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    volumes:
+      - ./host:/root/workspace
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    working_dir: /root/workspace
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DISPLAY=${DISPLAY}
+    network_mode: host
+
